@@ -8,49 +8,49 @@ import javax.swing.JTable;
 public class Main 
 {
     // Variables para Bubble sort
-    static int numPasadasBur = 0;
-    static int interaccionesBur = 0;
+    static long numPasadasBur = 0;
+    static long interaccionesBur = 0;
     static long elapsedTimeBur = 0;
 
     // Variables para Selection sort
-    static int numPasadasSel = 0;
-    static int interaccionesSel = 0;
+    static long numPasadasSel = 0;
+    static long interaccionesSel = 0;
     static long elapsedTimeSel = 0;
 
     // Variables para Insertion sort
-    static int numPasadasInsD = 0;
-    static int interaccionesInsD = 0;
+    static long numPasadasInsD = 0;
+    static long interaccionesInsD = 0;
     static long elapsedTimeInsD = 0;
 
     // Variables para Binary insertion sort
-    static int numPasadasInsB = 0;
-    static int interaccionesInsB = 0;
+    static long numPasadasInsB = 0;
+    static long interaccionesInsB = 0;
     static long elapsedTimeInsB = 0;
 
     // Variables para Shell sort
-    static int numPasadasShell = 0;
-    static int interaccionesShell = 0;
+    static long numPasadasShell = 0;
+    static long interaccionesShell = 0;
     static long elapsedTimeShell = 0;
 
     // Variables para Quick sort
-    static int numPasadasQuick = 0;
-    static int interaccionesQuick = 0;
+    static long numPasadasQuick = 0;
+    static long interaccionesQuick = 0;
     static long elapsedTimeQuick = 0;
 
     // Variables para Heap sort
-    static int numPasadasHeap = 0;
-    static int interaccionesHeap = 0;
+    static long numPasadasHeap = 0;
+    static long interaccionesHeap = 0;
     static long elapsedTimeHeap = 0;
 
     // Variables para Direct exchange sort
-    static int numPasadasIntD = 0;
-    static int numInteraccionesIntD = 0;
+    static long numPasadasIntD = 0;
+    static long numInteraccionesIntD = 0;
     static long durationIntD = 0;
 
     // Variables para comparar los metodos de ordenamiento
-    static int mejorPasadas = 0;
+    static long mejorPasadas = 0;
     static String mejorPasadasNombre = "";
-    static int mejorInteracciones = 0;
+    static long mejorInteracciones = 0;
     static String mejorInteraccionesNombre = "";
     static long mejorTiempo = 0;
     static String mejorTiempoNombre = "";
@@ -100,267 +100,280 @@ public class Main
         System.out.println("3. Buscar un elemento en el arreglo: "); 
         System.out.println("4. Salir del programa: ");
         opcion = scanner.nextInt();
-        switch (opcion) {
-            case 1:
-                // Ordenar el arreglo
-                System.out.println("seleccione el método de ordenamiento que desea utilizar:");
-                System.out.println("1. Burbuja");
-                System.out.println("2. Selección");
-                System.out.println("3. Inserción directa");
-                System.out.println("4. Inserción binaria");
-                System.out.println("5. Shell");
-                System.out.println("6. QuickSort");
-                System.out.println("7. HeapSort");
-                System.out.println("8. Intercambio directo");
+        boolean salir = false;
+        while(!salir){
 
-                opcion = scanner.nextInt();
-                switch (opcion) {
-                    case 1:
-                        // Burbuja
-                        burbuja(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasBur);
-                        System.out.println("Número de interacciones: " + interaccionesBur);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeBur + " milisegundos");
-                        break;
-                    case 2:
-                        // Selección
-                        seleccion(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasSel);
-                        System.out.println("Número de interacciones: " + interaccionesSel);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeSel + " milisegundos");
-                        break;
-                    case 3:
-                        // Inserción directa
-                        insercionDirecta(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasInsD);
-                        System.out.println("Número de interacciones: " + interaccionesInsD);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeInsD + " milisegundos");
-                        break;
-                    case 4:
-                        // Inserción binaria
-                        insercionBinaria(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasInsB);
-                        System.out.println("Número de interacciones: " + interaccionesInsB);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeInsB + " milisegundos");
-                        break;
-                    case 5: 
-                        // Shell
-                        shell(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasShell);
-                        System.out.println("Número de interacciones: " + interaccionesShell);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeShell + " milisegundos");
-                        break;
-                    case 6:
-                        // QuickSort
-                        quickSort(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasQuick);
-                        System.out.println("Número de interacciones: " + interaccionesQuick);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeQuick + " milisegundos");
-                        break;
-                    case 7:
-                        // HeapSort
-                        heapSort(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasHeap);
-                        System.out.println("Número de interacciones: " + interaccionesHeap);
-                        System.out.println("Tiempo transcurrido: " + elapsedTimeHeap + " milisegundos");
-                        break;
-                    case 8:
-                        // Intercambio directo
-                        intercambioDirecto(arreglo);
-                        System.out.println("Número de pasadas: " + numPasadasIntD);
-                        System.out.println("Número de interacciones: " + numInteraccionesIntD);
-                        System.out.println("Tiempo transcurrido: " + durationIntD + " milisegundos");
-                        break;
-                
-                    default:
-                        break;
-                }
-                // Imprimir el arreglo
-                System.out.println("Actualmente los datos estan ordenados, su resultado es:");
-                for (int i = 0; i < tamano; i++) {
-                    System.out.print(arreglo[i] + ", ");
-                }
-                break;
-            case 2:
-                burbuja(arreglo);
-                seleccion(arreglo);
-                insercionDirecta(arreglo);
-                insercionBinaria(arreglo);
-                shell(arreglo);
-                quickSort(arreglo);
-                heapSort(arreglo);
-                intercambioDirecto(arreglo);
-
-                // comparar los metodos de ordenamiento
-                String[] columnas = {"Método", "Pasadas", "Interacciones", "Tiempo (m/s)"};
-                String[][] datos = {
-                    {"Método", "Pasadas", "Interacciones", "Tiempo"},
-                    {"Burbuja", String.valueOf(numPasadasBur), String.valueOf(interaccionesBur), String.valueOf(elapsedTimeBur)},
-                    {"Selección", String.valueOf(numPasadasSel), String.valueOf(interaccionesSel), String.valueOf(elapsedTimeSel)},
-                    {"Inserción directa", String.valueOf(numPasadasInsD), String.valueOf(interaccionesInsD), String.valueOf(elapsedTimeInsD)},
-                    {"Inserción binaria", String.valueOf(numPasadasInsB), String.valueOf(interaccionesInsB), String.valueOf(elapsedTimeInsB)},
-                    {"Shell", String.valueOf(numPasadasShell), String.valueOf(interaccionesShell), String.valueOf(elapsedTimeShell)},
-                    {"QuickSort", String.valueOf(numPasadasQuick), String.valueOf(interaccionesQuick), String.valueOf(elapsedTimeQuick)},
-                    {"HeapSort", String.valueOf(numPasadasHeap), String.valueOf(interaccionesHeap), String.valueOf(elapsedTimeHeap)},
-                    {"Intercambio directo", String.valueOf(numPasadasIntD), String.valueOf(numInteraccionesIntD), String.valueOf(durationIntD)}
-                };
-                System.out.println("Comparación de los métodos de ordenamiento");
-
-                //Comparara pasadas
-                if (numPasadasBur<numPasadasSel && numPasadasBur<numPasadasInsD && numPasadasBur<numPasadasInsB && numPasadasBur<numPasadasShell && numPasadasBur<numPasadasQuick && numPasadasBur<numPasadasHeap && numPasadasBur<numPasadasIntD) {
-                    mejorPasadas = numPasadasBur;
-                    mejorPasadasNombre = "Burbuja";
-                } else if (numPasadasSel<numPasadasBur && numPasadasSel<numPasadasInsD && numPasadasSel<numPasadasInsB && numPasadasSel<numPasadasShell && numPasadasSel<numPasadasQuick && numPasadasSel<numPasadasHeap && numPasadasSel<numPasadasIntD) {
-                    mejorPasadas = numPasadasSel;
-                    mejorPasadasNombre = "Selección";
-                } else if (numPasadasInsD<numPasadasBur && numPasadasInsD<numPasadasSel && numPasadasInsD<numPasadasInsB && numPasadasInsD<numPasadasShell && numPasadasInsD<numPasadasQuick && numPasadasInsD<numPasadasHeap && numPasadasInsD<numPasadasIntD) {
-                    mejorPasadas = numPasadasInsD;
-                    mejorPasadasNombre = "Inserción directa";
-                } else if (numPasadasInsB<numPasadasBur && numPasadasInsB<numPasadasSel && numPasadasInsB<numPasadasInsD && numPasadasInsB<numPasadasShell && numPasadasInsB<numPasadasQuick && numPasadasInsB<numPasadasHeap && numPasadasInsB<numPasadasIntD) {
-                    mejorPasadas = numPasadasInsB;
-                    mejorPasadasNombre = "Inserción binaria";
-                } else if (numPasadasShell<numPasadasBur && numPasadasShell<numPasadasSel && numPasadasShell<numPasadasInsD && numPasadasShell<numPasadasInsB && numPasadasShell<numPasadasQuick && numPasadasShell<numPasadasHeap && numPasadasShell<numPasadasIntD) {
-                    mejorPasadas = numPasadasShell;
-                    mejorPasadasNombre = "Shell";
-                } else if (numPasadasQuick<numPasadasBur && numPasadasQuick<numPasadasSel && numPasadasQuick<numPasadasInsD && numPasadasQuick<numPasadasInsB && numPasadasQuick<numPasadasShell && numPasadasQuick<numPasadasHeap && numPasadasQuick<numPasadasIntD) {
-                    mejorPasadas = numPasadasQuick;
-                    mejorPasadasNombre = "QuickSort";
-                } else if (numPasadasHeap<numPasadasBur && numPasadasHeap<numPasadasSel && numPasadasHeap<numPasadasInsD && numPasadasHeap<numPasadasInsB && numPasadasHeap<numPasadasShell && numPasadasHeap<numPasadasQuick && numPasadasHeap<numPasadasIntD) {
-                    mejorPasadas = numPasadasHeap;
-                    mejorPasadasNombre = "HeapSort";
-                } else if (numPasadasIntD<numPasadasBur && numPasadasIntD<numPasadasSel && numPasadasIntD<numPasadasInsD && numPasadasIntD<numPasadasInsB && numPasadasIntD<numPasadasShell && numPasadasIntD<numPasadasQuick && numPasadasIntD<numPasadasHeap) {
-                    mejorPasadas = numPasadasIntD;
-                    mejorPasadasNombre = "Intercambio directo";
-                }
-
-                //Comparar interacciones
-                if (interaccionesBur<interaccionesSel && interaccionesBur<interaccionesInsD && interaccionesBur<interaccionesInsB && interaccionesBur<interaccionesShell && interaccionesBur<interaccionesQuick && interaccionesBur<interaccionesHeap && interaccionesBur<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesBur;
-                    mejorInteraccionesNombre = "Burbuja";
-                } else if (interaccionesSel<interaccionesBur && interaccionesSel<interaccionesInsD && interaccionesSel<interaccionesInsB && interaccionesSel<interaccionesShell && interaccionesSel<interaccionesQuick && interaccionesSel<interaccionesHeap && interaccionesSel<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesSel;
-                    mejorInteraccionesNombre = "Selección";
-                } else if (interaccionesInsD<interaccionesBur && interaccionesInsD<interaccionesSel && interaccionesInsD<interaccionesInsB && interaccionesInsD<interaccionesShell && interaccionesInsD<interaccionesQuick && interaccionesInsD<interaccionesHeap && interaccionesInsD<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesInsD;
-                    mejorInteraccionesNombre = "Inserción directa";
-                } else if (interaccionesInsB<interaccionesBur && interaccionesInsB<interaccionesSel && interaccionesInsB<interaccionesInsD && interaccionesInsB<interaccionesShell && interaccionesInsB<interaccionesQuick && interaccionesInsB<interaccionesHeap && interaccionesInsB<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesInsB;
-                    mejorInteraccionesNombre = "Inserción binaria";
-                } else if (interaccionesShell<interaccionesBur && interaccionesShell<interaccionesSel && interaccionesShell<interaccionesInsD && interaccionesShell<interaccionesInsB && interaccionesShell<interaccionesQuick && interaccionesShell<interaccionesHeap && interaccionesShell<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesShell;
-                    mejorInteraccionesNombre = "Shell";
-                } else if (interaccionesQuick<interaccionesBur && interaccionesQuick<interaccionesSel && interaccionesQuick<interaccionesInsD && interaccionesQuick<interaccionesInsB && interaccionesQuick<interaccionesShell && interaccionesQuick<interaccionesHeap && interaccionesQuick<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesQuick;
-                    mejorInteraccionesNombre = "QuickSort";
-                } else if (interaccionesHeap<interaccionesBur && interaccionesHeap<interaccionesSel && interaccionesHeap<interaccionesInsD && interaccionesHeap<interaccionesInsB && interaccionesHeap<interaccionesShell && interaccionesHeap<interaccionesQuick && interaccionesHeap<numInteraccionesIntD) {
-                    mejorInteracciones = interaccionesHeap;
-                    mejorInteraccionesNombre = "HeapSort";
-                } else if (numInteraccionesIntD<interaccionesBur && numInteraccionesIntD<interaccionesSel && numInteraccionesIntD<interaccionesInsD &&numInteraccionesIntD<interaccionesInsB && numInteraccionesIntD<interaccionesShell && numInteraccionesIntD<interaccionesQuick && numInteraccionesIntD<interaccionesHeap) {
-                    mejorInteracciones = numInteraccionesIntD;
-                    mejorInteraccionesNombre = "Intercambio directo";
-                }
-
-                //Comparar tiempo
-                if (elapsedTimeBur<=elapsedTimeSel && elapsedTimeBur<=elapsedTimeInsD && elapsedTimeBur<=elapsedTimeInsB && elapsedTimeBur<=elapsedTimeShell && elapsedTimeBur<=elapsedTimeQuick && elapsedTimeBur<=elapsedTimeHeap && elapsedTimeBur<=durationIntD) {
-                    mejorTiempo = elapsedTimeBur;
-                    mejorTiempoNombre = "Burbuja";
-                } else if (elapsedTimeSel<=elapsedTimeBur && elapsedTimeSel<=elapsedTimeInsD && elapsedTimeSel<=elapsedTimeInsB && elapsedTimeSel<=elapsedTimeShell && elapsedTimeSel<=elapsedTimeQuick && elapsedTimeSel<=elapsedTimeHeap && elapsedTimeSel<=durationIntD) {
-                    mejorTiempo = elapsedTimeSel;
-                    mejorTiempoNombre = "Selección";
-                } else if (elapsedTimeInsD<=elapsedTimeBur && elapsedTimeInsD<=elapsedTimeSel && elapsedTimeInsD<=elapsedTimeInsB && elapsedTimeInsD<=elapsedTimeShell && elapsedTimeInsD<=elapsedTimeQuick && elapsedTimeInsD<=elapsedTimeHeap && elapsedTimeInsD<=durationIntD) {
-                    mejorTiempo = elapsedTimeInsD;
-                    mejorTiempoNombre = "Inserción directa";
-                } else if (elapsedTimeInsB<=elapsedTimeBur && elapsedTimeInsB<=elapsedTimeSel && elapsedTimeInsB<=elapsedTimeInsD && elapsedTimeInsB<=elapsedTimeShell && elapsedTimeInsB<=elapsedTimeQuick && elapsedTimeInsB<=elapsedTimeHeap && elapsedTimeInsB<=durationIntD) {
-                    mejorTiempo = elapsedTimeInsB;
-                    mejorTiempoNombre = "Inserción binaria";
-                } else if (elapsedTimeShell<=elapsedTimeBur && elapsedTimeShell<=elapsedTimeSel && elapsedTimeShell<=elapsedTimeInsD && elapsedTimeShell<=elapsedTimeInsB && elapsedTimeShell<=elapsedTimeQuick && elapsedTimeShell<=elapsedTimeHeap && elapsedTimeShell<=durationIntD) {
-                    mejorTiempo = elapsedTimeShell;
-                    mejorTiempoNombre = "Shell";
-                } else if (elapsedTimeQuick<=elapsedTimeBur && elapsedTimeQuick<=elapsedTimeSel && elapsedTimeQuick<=elapsedTimeInsD && elapsedTimeQuick<=elapsedTimeInsB && elapsedTimeQuick<=elapsedTimeShell && elapsedTimeQuick<=elapsedTimeHeap && elapsedTimeQuick<=durationIntD) {
-                    mejorTiempo = elapsedTimeQuick;
-                    mejorTiempoNombre = "QuickSort";
-                } else if (elapsedTimeHeap<=elapsedTimeBur && elapsedTimeHeap<=elapsedTimeSel && elapsedTimeHeap<=elapsedTimeInsD && elapsedTimeHeap<=elapsedTimeInsB && elapsedTimeHeap<=elapsedTimeShell && elapsedTimeHeap<=elapsedTimeQuick && elapsedTimeHeap<=durationIntD) {
-                    mejorTiempo = elapsedTimeHeap;
-                    mejorTiempoNombre = "HeapSort";
-                } else if (durationIntD<=elapsedTimeBur && durationIntD<=elapsedTimeSel && durationIntD<=elapsedTimeInsD && durationIntD<=elapsedTimeInsB && durationIntD<=elapsedTimeShell && durationIntD<=elapsedTimeQuick && durationIntD<=elapsedTimeHeap) {
-                    mejorTiempo = durationIntD;
-                    mejorTiempoNombre = "Intercambio directo";
-                }
-
-
-                JFrame frame = new JFrame();
-                JPanel panel = new JPanel();
-                JTable table = new JTable(datos, columnas);
-                table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-                JLabel lbPas = new JLabel("El mejor método de ordenamiento por pasadas es: " + mejorPasadasNombre + " con " + mejorPasadas + " pasadas");
-                JLabel lbInt = new JLabel("El mejor método de ordenamiento por interacciones es: " + mejorInteraccionesNombre + " con " + mejorInteracciones + " interacciones");
-                JLabel lbTim = new JLabel("El mejor método de ordenamiento por tiempo es: " + mejorTiempoNombre + " con " + mejorTiempo + " milisegundos");
-                panel.add(table);
-                panel.add(lbPas);
-                panel.add(lbInt);
-                panel.add(lbTim);
-                frame.add(panel);
-                frame.setSize(500, 500);
-                frame.setVisible(true);
-
-                break;
-            case 3:
-                System.out.println("Desea hacer busqueda secuencial o binaria?: ");
-                System.out.println("1. Busqueda secuencial");
-                System.out.println("2. Busqueda binaria");
-                opcion = scanner.nextInt();
-                switch (opcion) {
-                    case 1:
-                        // Busqueda secuencial
-                        System.out.println("Ingrese el numero que desea buscar: ");
-                        int num = scanner.nextInt();
-                        int pos = 0;
-                        boolean encontrado = false;
-                        while (pos < arreglo.length && !encontrado) {
-                            if (arreglo[pos] == num) {
-                                encontrado = true;
-                            } else {
-                                pos++;
+            switch (opcion) {
+                case 1:
+                    // Ordenar el arreglo
+                    System.out.println("seleccione el método de ordenamiento que desea utilizar:");
+                    System.out.println("1. Burbuja");
+                    System.out.println("2. Selección");
+                    System.out.println("3. Inserción directa");
+                    System.out.println("4. Inserción binaria");
+                    System.out.println("5. Shell");
+                    System.out.println("6. QuickSort");
+                    System.out.println("7. HeapSort");
+                    System.out.println("8. Intercambio directo");
+    
+                    opcion = scanner.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            // Burbuja
+                            burbuja(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasBur);
+                            System.out.println("Número de interacciones: " + interaccionesBur);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeBur + " milisegundos");
+                            break;
+                        case 2:
+                            // Selección
+                            seleccion(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasSel);
+                            System.out.println("Número de interacciones: " + interaccionesSel);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeSel + " milisegundos");
+                            break;
+                        case 3:
+                            // Inserción directa
+                            insercionDirecta(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasInsD);
+                            System.out.println("Número de interacciones: " + interaccionesInsD);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeInsD + " milisegundos");
+                            break;
+                        case 4:
+                            // Inserción binaria
+                            insercionBinaria(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasInsB);
+                            System.out.println("Número de interacciones: " + interaccionesInsB);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeInsB + " milisegundos");
+                            break;
+                        case 5: 
+                            // Shell
+                            shell(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasShell);
+                            System.out.println("Número de interacciones: " + interaccionesShell);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeShell + " milisegundos");
+                            break;
+                        case 6:
+                            // QuickSort
+                            quickSort(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasQuick);
+                            System.out.println("Número de interacciones: " + interaccionesQuick);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeQuick + " milisegundos");
+                            break;
+                        case 7:
+                            // HeapSort
+                            heapSort(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasHeap);
+                            System.out.println("Número de interacciones: " + interaccionesHeap);
+                            System.out.println("Tiempo transcurrido: " + elapsedTimeHeap + " milisegundos");
+                            break;
+                        case 8:
+                            // Intercambio directo
+                            intercambioDirecto(arreglo);
+                            System.out.println("Número de pasadas: " + numPasadasIntD);
+                            System.out.println("Número de interacciones: " + numInteraccionesIntD);
+                            System.out.println("Tiempo transcurrido: " + durationIntD + " milisegundos");
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                    // Imprimir el arreglo
+                    System.out.println("Actualmente los datos estan ordenados, su resultado es:");
+                    for (int i = 0; i < tamano; i++) {
+                        System.out.print(arreglo[i] + ", ");
+                    }
+                    break;
+                case 2:
+                    int[] arreglo2 = arreglo.clone();
+                    burbuja(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    seleccion(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    insercionDirecta(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    insercionBinaria(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    shell(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    quickSort(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    heapSort(arreglo2);
+                    arreglo2 = arreglo.clone();
+                    intercambioDirecto(arreglo2);
+    
+                    // comparar los metodos de ordenamiento
+                    String[] columnas = {"Método", "Pasadas", "Interacciones", "Tiempo (m/s)"};
+                    String[][] datos = {
+                        {"Método", "Pasadas", "Interacciones", "Tiempo"},
+                        {"Burbuja", String.valueOf(numPasadasBur), String.valueOf(interaccionesBur), String.valueOf(elapsedTimeBur)},
+                        {"Selección", String.valueOf(numPasadasSel), String.valueOf(interaccionesSel), String.valueOf(elapsedTimeSel)},
+                        {"Inserción directa", String.valueOf(numPasadasInsD), String.valueOf(interaccionesInsD), String.valueOf(elapsedTimeInsD)},
+                        {"Inserción binaria", String.valueOf(numPasadasInsB), String.valueOf(interaccionesInsB), String.valueOf(elapsedTimeInsB)},
+                        {"Shell", String.valueOf(numPasadasShell), String.valueOf(interaccionesShell), String.valueOf(elapsedTimeShell)},
+                        {"QuickSort", String.valueOf(numPasadasQuick), String.valueOf(interaccionesQuick), String.valueOf(elapsedTimeQuick)},
+                        {"HeapSort", String.valueOf(numPasadasHeap), String.valueOf(interaccionesHeap), String.valueOf(elapsedTimeHeap)},
+                        {"Intercambio directo", String.valueOf(numPasadasIntD), String.valueOf(numInteraccionesIntD), String.valueOf(durationIntD)}
+                    };
+                    System.out.println("Comparación de los métodos de ordenamiento");
+    
+                    //Comparara pasadas
+                    if (numPasadasBur<numPasadasSel && numPasadasBur<numPasadasInsD && numPasadasBur<numPasadasInsB && numPasadasBur<numPasadasShell && numPasadasBur<numPasadasQuick && numPasadasBur<numPasadasHeap && numPasadasBur<numPasadasIntD) {
+                        mejorPasadas = numPasadasBur;
+                        mejorPasadasNombre = "Burbuja";
+                    } else if (numPasadasSel<numPasadasBur && numPasadasSel<numPasadasInsD && numPasadasSel<numPasadasInsB && numPasadasSel<numPasadasShell && numPasadasSel<numPasadasQuick && numPasadasSel<numPasadasHeap && numPasadasSel<numPasadasIntD) {
+                        mejorPasadas = numPasadasSel;
+                        mejorPasadasNombre = "Selección";
+                    } else if (numPasadasInsD<numPasadasBur && numPasadasInsD<numPasadasSel && numPasadasInsD<numPasadasInsB && numPasadasInsD<numPasadasShell && numPasadasInsD<numPasadasQuick && numPasadasInsD<numPasadasHeap && numPasadasInsD<numPasadasIntD) {
+                        mejorPasadas = numPasadasInsD;
+                        mejorPasadasNombre = "Inserción directa";
+                    } else if (numPasadasInsB<numPasadasBur && numPasadasInsB<numPasadasSel && numPasadasInsB<numPasadasInsD && numPasadasInsB<numPasadasShell && numPasadasInsB<numPasadasQuick && numPasadasInsB<numPasadasHeap && numPasadasInsB<numPasadasIntD) {
+                        mejorPasadas = numPasadasInsB;
+                        mejorPasadasNombre = "Inserción binaria";
+                    } else if (numPasadasShell<numPasadasBur && numPasadasShell<numPasadasSel && numPasadasShell<numPasadasInsD && numPasadasShell<numPasadasInsB && numPasadasShell<numPasadasQuick && numPasadasShell<numPasadasHeap && numPasadasShell<numPasadasIntD) {
+                        mejorPasadas = numPasadasShell;
+                        mejorPasadasNombre = "Shell";
+                    } else if (numPasadasQuick<numPasadasBur && numPasadasQuick<numPasadasSel && numPasadasQuick<numPasadasInsD && numPasadasQuick<numPasadasInsB && numPasadasQuick<numPasadasShell && numPasadasQuick<numPasadasHeap && numPasadasQuick<numPasadasIntD) {
+                        mejorPasadas = numPasadasQuick;
+                        mejorPasadasNombre = "QuickSort";
+                    } else if (numPasadasHeap<numPasadasBur && numPasadasHeap<numPasadasSel && numPasadasHeap<numPasadasInsD && numPasadasHeap<numPasadasInsB && numPasadasHeap<numPasadasShell && numPasadasHeap<numPasadasQuick && numPasadasHeap<numPasadasIntD) {
+                        mejorPasadas = numPasadasHeap;
+                        mejorPasadasNombre = "HeapSort";
+                    } else if (numPasadasIntD<numPasadasBur && numPasadasIntD<numPasadasSel && numPasadasIntD<numPasadasInsD && numPasadasIntD<numPasadasInsB && numPasadasIntD<numPasadasShell && numPasadasIntD<numPasadasQuick && numPasadasIntD<numPasadasHeap) {
+                        mejorPasadas = numPasadasIntD;
+                        mejorPasadasNombre = "Intercambio directo";
+                    }
+    
+                    //Comparar interacciones
+                    if (interaccionesBur<interaccionesSel && interaccionesBur<interaccionesInsD && interaccionesBur<interaccionesInsB && interaccionesBur<interaccionesShell && interaccionesBur<interaccionesQuick && interaccionesBur<interaccionesHeap && interaccionesBur<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesBur;
+                        mejorInteraccionesNombre = "Burbuja";
+                    } else if (interaccionesSel<interaccionesBur && interaccionesSel<interaccionesInsD && interaccionesSel<interaccionesInsB && interaccionesSel<interaccionesShell && interaccionesSel<interaccionesQuick && interaccionesSel<interaccionesHeap && interaccionesSel<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesSel;
+                        mejorInteraccionesNombre = "Selección";
+                    } else if (interaccionesInsD<interaccionesBur && interaccionesInsD<interaccionesSel && interaccionesInsD<interaccionesInsB && interaccionesInsD<interaccionesShell && interaccionesInsD<interaccionesQuick && interaccionesInsD<interaccionesHeap && interaccionesInsD<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesInsD;
+                        mejorInteraccionesNombre = "Inserción directa";
+                    } else if (interaccionesInsB<interaccionesBur && interaccionesInsB<interaccionesSel && interaccionesInsB<interaccionesInsD && interaccionesInsB<interaccionesShell && interaccionesInsB<interaccionesQuick && interaccionesInsB<interaccionesHeap && interaccionesInsB<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesInsB;
+                        mejorInteraccionesNombre = "Inserción binaria";
+                    } else if (interaccionesShell<interaccionesBur && interaccionesShell<interaccionesSel && interaccionesShell<interaccionesInsD && interaccionesShell<interaccionesInsB && interaccionesShell<interaccionesQuick && interaccionesShell<interaccionesHeap && interaccionesShell<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesShell;
+                        mejorInteraccionesNombre = "Shell";
+                    } else if (interaccionesQuick<interaccionesBur && interaccionesQuick<interaccionesSel && interaccionesQuick<interaccionesInsD && interaccionesQuick<interaccionesInsB && interaccionesQuick<interaccionesShell && interaccionesQuick<interaccionesHeap && interaccionesQuick<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesQuick;
+                        mejorInteraccionesNombre = "QuickSort";
+                    } else if (interaccionesHeap<interaccionesBur && interaccionesHeap<interaccionesSel && interaccionesHeap<interaccionesInsD && interaccionesHeap<interaccionesInsB && interaccionesHeap<interaccionesShell && interaccionesHeap<interaccionesQuick && interaccionesHeap<numInteraccionesIntD) {
+                        mejorInteracciones = interaccionesHeap;
+                        mejorInteraccionesNombre = "HeapSort";
+                    } else if (numInteraccionesIntD<interaccionesBur && numInteraccionesIntD<interaccionesSel && numInteraccionesIntD<interaccionesInsD &&numInteraccionesIntD<interaccionesInsB && numInteraccionesIntD<interaccionesShell && numInteraccionesIntD<interaccionesQuick && numInteraccionesIntD<interaccionesHeap) {
+                        mejorInteracciones = numInteraccionesIntD;
+                        mejorInteraccionesNombre = "Intercambio directo";
+                    }
+    
+                    //Comparar tiempo
+                    if (elapsedTimeBur<=elapsedTimeSel && elapsedTimeBur<=elapsedTimeInsD && elapsedTimeBur<=elapsedTimeInsB && elapsedTimeBur<=elapsedTimeShell && elapsedTimeBur<=elapsedTimeQuick && elapsedTimeBur<=elapsedTimeHeap && elapsedTimeBur<=durationIntD) {
+                        mejorTiempo = elapsedTimeBur;
+                        mejorTiempoNombre = "Burbuja";
+                    } else if (elapsedTimeSel<=elapsedTimeBur && elapsedTimeSel<=elapsedTimeInsD && elapsedTimeSel<=elapsedTimeInsB && elapsedTimeSel<=elapsedTimeShell && elapsedTimeSel<=elapsedTimeQuick && elapsedTimeSel<=elapsedTimeHeap && elapsedTimeSel<=durationIntD) {
+                        mejorTiempo = elapsedTimeSel;
+                        mejorTiempoNombre = "Selección";
+                    } else if (elapsedTimeInsD<=elapsedTimeBur && elapsedTimeInsD<=elapsedTimeSel && elapsedTimeInsD<=elapsedTimeInsB && elapsedTimeInsD<=elapsedTimeShell && elapsedTimeInsD<=elapsedTimeQuick && elapsedTimeInsD<=elapsedTimeHeap && elapsedTimeInsD<=durationIntD) {
+                        mejorTiempo = elapsedTimeInsD;
+                        mejorTiempoNombre = "Inserción directa";
+                    } else if (elapsedTimeInsB<=elapsedTimeBur && elapsedTimeInsB<=elapsedTimeSel && elapsedTimeInsB<=elapsedTimeInsD && elapsedTimeInsB<=elapsedTimeShell && elapsedTimeInsB<=elapsedTimeQuick && elapsedTimeInsB<=elapsedTimeHeap && elapsedTimeInsB<=durationIntD) {
+                        mejorTiempo = elapsedTimeInsB;
+                        mejorTiempoNombre = "Inserción binaria";
+                    } else if (elapsedTimeShell<=elapsedTimeBur && elapsedTimeShell<=elapsedTimeSel && elapsedTimeShell<=elapsedTimeInsD && elapsedTimeShell<=elapsedTimeInsB && elapsedTimeShell<=elapsedTimeQuick && elapsedTimeShell<=elapsedTimeHeap && elapsedTimeShell<=durationIntD) {
+                        mejorTiempo = elapsedTimeShell;
+                        mejorTiempoNombre = "Shell";
+                    } else if (elapsedTimeQuick<=elapsedTimeBur && elapsedTimeQuick<=elapsedTimeSel && elapsedTimeQuick<=elapsedTimeInsD && elapsedTimeQuick<=elapsedTimeInsB && elapsedTimeQuick<=elapsedTimeShell && elapsedTimeQuick<=elapsedTimeHeap && elapsedTimeQuick<=durationIntD) {
+                        mejorTiempo = elapsedTimeQuick;
+                        mejorTiempoNombre = "QuickSort";
+                    } else if (elapsedTimeHeap<=elapsedTimeBur && elapsedTimeHeap<=elapsedTimeSel && elapsedTimeHeap<=elapsedTimeInsD && elapsedTimeHeap<=elapsedTimeInsB && elapsedTimeHeap<=elapsedTimeShell && elapsedTimeHeap<=elapsedTimeQuick && elapsedTimeHeap<=durationIntD) {
+                        mejorTiempo = elapsedTimeHeap;
+                        mejorTiempoNombre = "HeapSort";
+                    } else if (durationIntD<=elapsedTimeBur && durationIntD<=elapsedTimeSel && durationIntD<=elapsedTimeInsD && durationIntD<=elapsedTimeInsB && durationIntD<=elapsedTimeShell && durationIntD<=elapsedTimeQuick && durationIntD<=elapsedTimeHeap) {
+                        mejorTiempo = durationIntD;
+                        mejorTiempoNombre = "Intercambio directo";
+                    }
+    
+    
+                    JFrame frame = new JFrame();
+                    JPanel panel = new JPanel();
+                    JTable table = new JTable(datos, columnas);
+                    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+                    JLabel lbPas = new JLabel("El mejor método de ordenamiento por pasadas es: " + mejorPasadasNombre + " con " + mejorPasadas + " pasadas");
+                    JLabel lbInt = new JLabel("El mejor método de ordenamiento por interacciones es: " + mejorInteraccionesNombre + " con " + mejorInteracciones + " interacciones");
+                    JLabel lbTim = new JLabel("El mejor método de ordenamiento por tiempo es: " + mejorTiempoNombre + " con " + mejorTiempo + " milisegundos");
+                    panel.add(table);
+                    panel.add(lbPas);
+                    panel.add(lbInt);
+                    panel.add(lbTim);
+                    frame.add(panel);
+                    frame.setSize(500, 500);
+                    frame.setVisible(true);
+                    salir = true;
+                    break;
+                case 3:
+                    System.out.println("Desea hacer busqueda secuencial o binaria?: ");
+                    System.out.println("1. Busqueda secuencial");
+                    System.out.println("2. Busqueda binaria");
+                    opcion = scanner.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            // Busqueda secuencial
+                            System.out.println("Ingrese el numero que desea buscar: ");
+                            int num = scanner.nextInt();
+                            int pos = 0;
+                            boolean encontrado = false;
+                            while (pos < arreglo.length && !encontrado) {
+                                if (arreglo[pos] == num) {
+                                    encontrado = true;
+                                } else {
+                                    pos++;
+                                }
                             }
-                        }
-                        if (encontrado) {
-                            System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
-                        } else {
-                            System.out.println("El numero " + num + " no se encuentra en el arreglo");
-                        }
-                        break;
-                    case 2:
-                        // Busqueda binaria
-                        System.out.println("Ingrese el numero que desea buscar: ");
-                        num = scanner.nextInt();
-                        int centro, inf = 0, sup = arreglo.length - 1;
-                        boolean encontradoBin = false;
-                        while (inf <= sup && !encontradoBin) {
-                            centro = (sup + inf) / 2;
-                            if (arreglo[centro] == num) {
-                                encontradoBin = true;
-                            } else if (num < arreglo[centro]) {
-                                sup = centro - 1;
+                            if (encontrado) {
+                                System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
                             } else {
-                                inf = centro + 1;
+                                System.out.println("El numero " + num + " no se encuentra en el arreglo");
                             }
-                        }
-                        if (encontradoBin) {
-                            System.out.println("El numero " + num + " se encuentra en la posicion " + inf);
-                        } else {
-                            System.out.println("El numero " + num + " no se encuentra en el arreglo");
-                        }
-                        break;
-                    default:
-                        break;
+                            break;
+                        case 2:
+                            // Busqueda binaria
+                            System.out.println("Ingrese el numero que desea buscar: ");
+                            num = scanner.nextInt();
+                            int centro, inf = 0, sup = arreglo.length - 1;
+                            boolean encontradoBin = false;
+                            while (inf <= sup && !encontradoBin) {
+                                centro = (sup + inf) / 2;
+                                if (arreglo[centro] == num) {
+                                    encontradoBin = true;
+                                } else if (num < arreglo[centro]) {
+                                    sup = centro - 1;
+                                } else {
+                                    inf = centro + 1;
+                                }
+                            }
+                            if (encontradoBin) {
+                                System.out.println("El numero " + num + " se encuentra en la posicion " + inf);
+                            } else {
+                                System.out.println("El numero " + num + " no se encuentra en el arreglo");
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 4:
+                    System.out.println("Gracias por utilizar el programa");
+                    salir = true;
+                    break;
+                default:
+                    break;
                 }
-                break;
-            case 4:
-                System.out.println("Gracias por utilizar el programa");
-                break;
-            default:
-                break;
-            }
+        }
     }
 
     public static void burbuja(int[] arreglo) {
