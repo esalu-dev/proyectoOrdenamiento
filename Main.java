@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -98,7 +99,8 @@ public class Main
         System.out.println("1. Ordenar el arreglo por un metodo a elegir: ");
         System.out.println("2. Comparar los metodos de ordenamiento:");
         System.out.println("3. Buscar un elemento en el arreglo: "); 
-        System.out.println("4. Salir del programa: ");
+        System.out.println("4. Métodos de ordenamiento con impresión de cada paso: ");
+        System.out.println("5. Salir del programa: ");
         opcion = scanner.nextInt();
         boolean salir = false;
         while(!salir){
@@ -366,12 +368,92 @@ public class Main
                             break;
                     }
                     break;
-                case 4:
+                    case 4:
+                        // Ordenar el arreglo con impresion de cada paso
+                        System.out.println("seleccione el método de ordenamiento que desea utilizar:");
+                        System.out.println("1. Burbuja");
+                        System.out.println("2. Selección");
+                        System.out.println("3. Inserción directa");
+                        System.out.println("4. Inserción binaria");
+                        System.out.println("5. Shell");
+                        System.out.println("6. QuickSort");
+                        System.out.println("7. HeapSort");
+                        System.out.println("8. Intercambio directo");
+        
+                        opcion = scanner.nextInt();
+                        switch (opcion) {
+                            case 1:
+                                // Burbuja
+                                burbujaConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasBur);
+                                System.out.println("Número de interacciones: " + interaccionesBur);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeBur + " milisegundos");
+                                break;
+                            case 2:
+                                // Selección
+                                seleccionConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasSel);
+                                System.out.println("Número de interacciones: " + interaccionesSel);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeSel + " milisegundos");
+                                break;
+                            case 3:
+                                // Inserción directa
+                                insercionDirectaConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasInsD);
+                                System.out.println("Número de interacciones: " + interaccionesInsD);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeInsD + " milisegundos");
+                                break;
+                            case 4:
+                                // Inserción binaria
+                                insercionBinariaConPasos(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasInsB);
+                                System.out.println("Número de interacciones: " + interaccionesInsB);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeInsB + " milisegundos");
+                                break;
+                            case 5: 
+                                // Shell
+                                shellConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasShell);
+                                System.out.println("Número de interacciones: " + interaccionesShell);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeShell + " milisegundos");
+                                break;
+                            case 6:
+                                // QuickSort
+                                quickSortConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasQuick);
+                                System.out.println("Número de interacciones: " + interaccionesQuick);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeQuick + " milisegundos");
+                                break;
+                            case 7:
+                                // HeapSort
+                                heapSortConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasHeap);
+                                System.out.println("Número de interacciones: " + interaccionesHeap);
+                                System.out.println("Tiempo transcurrido: " + elapsedTimeHeap + " milisegundos");
+                                break;
+                            case 8:
+                                // Intercambio directo
+                                intercambioDirectoConImpresion(arreglo);
+                                System.out.println("Número de pasadas: " + numPasadasIntD);
+                                System.out.println("Número de interacciones: " + numInteraccionesIntD);
+                                System.out.println("Tiempo transcurrido: " + durationIntD + " milisegundos");
+                                break;
+                    
+                        default:
+                            break;
+                    }
+                    // Imprimir el arreglo
+                    System.out.println("Actualmente los datos estan ordenados, su resultado es:");
+                    for (int i = 0; i < tamano; i++) {
+                        System.out.print(arreglo[i] + ", ");
+                    }
+                    break;
+                    
+                default:
                     System.out.println("Gracias por utilizar el programa");
                     salir = true;
                     break;
-                default:
-                    break;
+
                 }
         }
     }
@@ -403,6 +485,36 @@ public class Main
         elapsedTimeBur = endTime - startTime;
     }
     
+    public static void burbujaConImpresion(int[] arreglo) {
+        int auxiliar;
+        boolean cambios = false;
+
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+
+        while (true) {
+            cambios = false;
+            for (int i = 1; i < arreglo.length; i++) {
+                if (arreglo[i] < arreglo[i - 1]) {
+                    auxiliar = arreglo[i];
+                    arreglo[i] = arreglo[i - 1];
+                    arreglo[i - 1] = auxiliar;
+                    cambios = true;
+                    numPasadasBur++;
+                    System.out.println("Intercambiado " + arreglo[i] + " con " + arreglo[i - 1]);
+                    System.out.println(Arrays.toString(arreglo));
+                }
+                interaccionesBur++; // Contador de interacciones
+
+                // Imprimir el arreglo en cada paso
+            }
+            if (!cambios) {
+                break;
+            }
+        }
+
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeBur = endTime - startTime;
+    }
 
     public static void seleccion(int[] arreglo) {
         int indiceMenor;
@@ -430,6 +542,38 @@ public class Main
         elapsedTimeSel = endTime - startTime;
     
     }
+
+    public static void seleccionConImpresion(int[] arreglo) {
+        int indiceMenor;
+        int auxiliar;
+    
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+    
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            indiceMenor = i;
+            for (int j = i + 1; j < arreglo.length; j++) {
+                if (arreglo[j] < arreglo[indiceMenor]) {
+                    indiceMenor = j;
+                }
+                interaccionesSel++; // Contador de interacciones
+            }
+            if (i != indiceMenor) {
+                System.out.println("Intercambiando " + arreglo[i] + " con " + arreglo[indiceMenor]); // Imprimir los datos que se están intercambiando
+
+                auxiliar = arreglo[i];
+                arreglo[i] = arreglo[indiceMenor];
+                arreglo[indiceMenor] = auxiliar;
+
+                System.out.println(Arrays.toString(arreglo));
+
+            }
+            numPasadasSel++;
+        }
+    
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeSel = endTime - startTime;
+    
+    }
     
 
     public static void insercionDirecta(int[] arreglo) {
@@ -449,6 +593,34 @@ public class Main
             numPasadasInsD++;
         }
     
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeInsD = endTime - startTime;
+    }
+
+    public static void insercionDirectaConImpresion(int[] arreglo) {
+        int auxiliar;
+        int p;
+
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+
+        for (int i = 1; i < arreglo.length; i++) {
+            auxiliar = arreglo[i];
+            p = i - 1;
+            while (p >= 0 && arreglo[p] > auxiliar) {
+                System.out.println("Intercambiando " + arreglo[p] + " con " + auxiliar); // Imprimir los datos que se están intercambiando
+
+                arreglo[p + 1] = arreglo[p];
+                p--;
+
+                // Imprimir el arreglo después de cada intercambio
+                System.out.println(Arrays.toString(arreglo));
+
+                interaccionesInsD++; // Contador de interacciones
+            }
+            arreglo[p + 1] = auxiliar;
+            numPasadasInsD++;
+        }
+
         long endTime = System.currentTimeMillis(); // Fin del tiempo
         elapsedTimeInsD = endTime - startTime;
     }
@@ -485,6 +657,42 @@ public class Main
         long endTime = System.currentTimeMillis(); // Fin del tiempo
         elapsedTimeInsB = endTime - startTime;
     }
+
+    public static void insercionBinariaConPasos(int[] arreglo) {
+        int auxiliar, izquierda, derecha, centro;
+
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+
+        for (int i = 1; i < arreglo.length; i++) {
+            auxiliar = arreglo[i];
+            izquierda = 0;
+            derecha = i - 1;
+
+            while (izquierda <= derecha) {
+                centro = (izquierda + derecha) / 2;
+                if (auxiliar < arreglo[centro]) {
+                    derecha = centro - 1;
+                } else {
+                    izquierda = centro + 1;
+                }
+                interaccionesInsB++; // Contador de interacciones
+            }
+
+            for (int j = i - 1; j >= izquierda; j--) {
+                System.out.println("Intercambiando " + arreglo[j] + " con " + arreglo[j + 1]); // Imprimir los datos que se están intercambiando
+
+                arreglo[j + 1] = arreglo[j];
+
+                // Imprimir el arreglo después de cada intercambio
+                System.out.println(Arrays.toString(arreglo));
+            }
+            arreglo[izquierda] = auxiliar;
+            numPasadasInsB++;
+        }
+
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeInsB = endTime - startTime;
+    }
     
 
     public static void shell(int[] arreglo) {
@@ -513,6 +721,38 @@ public class Main
         long endTime = System.currentTimeMillis(); // Fin del tiempo
         elapsedTimeShell = endTime - startTime;
 
+    }
+
+    public static void shellConImpresion(int[] arreglo) {
+        int salto, auxiliar;
+        boolean cambios;
+
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+
+        for (salto = arreglo.length / 2; salto != 0; salto /= 2) {
+            cambios = true;
+            while (cambios) {
+                cambios = false;
+                for (int i = salto; i < arreglo.length; i++) {
+                    if (arreglo[i - salto] > arreglo[i]) {
+                        System.out.println("Intercambiando " + arreglo[i - salto] + " con " + arreglo[i]); // Imprimir los datos que se están intercambiando
+
+                        auxiliar = arreglo[i];
+                        arreglo[i] = arreglo[i - salto];
+                        arreglo[i - salto] = auxiliar;
+                        cambios = true;
+
+                        // Imprimir el arreglo después de cada intercambio
+                        System.out.println(Arrays.toString(arreglo));
+                    }
+                    interaccionesShell++; // Contador de interacciones
+                }
+            }
+            numPasadasShell++;
+        }
+
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeShell = endTime - startTime;
     }
     
 
@@ -561,6 +801,60 @@ public class Main
         elapsedTimeQuick = endTime - startTime;
     
     }
+
+    public static void quickSortConImpresion(int[] arreglo) {
+        quickSortConImpresion(arreglo, 0, arreglo.length - 1);
+    }
+
+    private static void quickSortConImpresion(int[] arreglo, int izquierda, int derecha) {
+        if (izquierda >= derecha) {
+            return;
+        }
+
+        int pivote = arreglo[izquierda];
+        int i = izquierda + 1;
+        int j = derecha;
+        int auxiliar;
+
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+
+        while (i <= j) {
+            while (i <= j && arreglo[i] <= pivote) {
+                i++;
+                interaccionesQuick++; // Contador de interacciones
+            }
+            while (i <= j && arreglo[j] > pivote) {
+                j--;
+                interaccionesQuick++; // Contador de interacciones
+            }
+            if (i < j) {
+                System.out.println("Intercambiando " + arreglo[i] + " con " + arreglo[j]); // Imprimir los datos que se están intercambiando
+
+                auxiliar = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = auxiliar;
+
+                // Imprimir el arreglo después de cada intercambio
+                System.out.println(Arrays.toString(arreglo));
+            }
+            numPasadasQuick++;
+        }
+
+        System.out.println("Intercambiando " + arreglo[izquierda] + " con " + arreglo[j]); // Imprimir los datos que se están intercambiando
+
+        auxiliar = arreglo[izquierda];
+        arreglo[izquierda] = arreglo[j];
+        arreglo[j] = auxiliar;
+
+        // Imprimir el arreglo después de cada intercambio
+        System.out.println(Arrays.toString(arreglo));
+
+        quickSortConImpresion(arreglo, izquierda, j - 1);
+        quickSortConImpresion(arreglo, j + 1, derecha);
+
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeQuick = endTime - startTime;
+    }
     
 
     public static void heapSort(int[] arreglo) {
@@ -584,6 +878,32 @@ public class Main
          elapsedTimeHeap = endTime - startTime;
 
 
+    }
+
+    public static void heapSortConImpresion(int[] arreglo) {
+        int i;
+        int auxiliar;
+    
+        long startTime = System.currentTimeMillis(); // Inicio del tiempo
+        for (i = arreglo.length / 2 - 1; i >= 0; i--) {
+            hacerMonticulo(arreglo, i, arreglo.length - 1);
+            numPasadasHeap++;
+        }
+        for (i = arreglo.length - 1; i >= 0; i--) {
+            System.out.println("Intercambiando " + arreglo[0] + " con " + arreglo[i]); // Imprimir los datos que se están intercambiando
+    
+            auxiliar = arreglo[0];
+            arreglo[0] = arreglo[i];
+            arreglo[i] = auxiliar;
+    
+            // Imprimir el arreglo después de cada intercambio
+            System.out.println(Arrays.toString(arreglo));
+    
+            hacerMonticulo(arreglo, 0, i - 1);
+            interaccionesHeap++;
+        }
+        long endTime = System.currentTimeMillis(); // Fin del tiempo
+        elapsedTimeHeap = endTime - startTime;
     }
 
     private static void hacerMonticulo(int[] arreglo, int primero, int ultimo) {
@@ -619,6 +939,32 @@ public class Main
                     auxiliar = arreglo[i];
                     arreglo[i] = arreglo[j];
                     arreglo[j] = auxiliar;
+                }
+                numInteraccionesIntD++;
+            }
+            numPasadasIntD++;
+        }
+
+        long endTimeIntD = System.nanoTime();
+        durationIntD = (endTimeIntD - startTimeIntD) / 1000000; // Convertir a milisegundos
+    }
+
+    public static void intercambioDirectoConImpresion(int[] arreglo) {
+        int auxiliar;
+
+        long startTimeIntD = System.nanoTime();
+
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            for (int j = i + 1; j < arreglo.length; j++) {
+                if (arreglo[i] > arreglo[j]) {
+                    System.out.println("Intercambiando " + arreglo[i] + " con " + arreglo[j]); // Imprimir los datos que se están intercambiando
+
+                    auxiliar = arreglo[i];
+                    arreglo[i] = arreglo[j];
+                    arreglo[j] = auxiliar;
+
+                    // Imprimir el arreglo después de cada intercambio
+                    System.out.println(Arrays.toString(arreglo));
                 }
                 numInteraccionesIntD++;
             }
