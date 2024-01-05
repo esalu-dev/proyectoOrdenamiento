@@ -185,6 +185,71 @@ public class Main
                     for (int i = 0; i < tamano; i++) {
                         System.out.print(arreglo[i] + ", ");
                     }
+                    System.out.println("Desea buscar un elemento en el arreglo?");
+                    System.out.println("1. Si");
+                    System.out.println("2. No");
+                    opcion = scanner.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("Desea hacer busqueda secuencial o binaria?: ");
+                            System.out.println("1. Busqueda secuencial");
+                            System.out.println("2. Busqueda binaria");
+                            opcion = scanner.nextInt();
+                            switch (opcion) {
+                                case 1:
+                                    // Busqueda secuencial
+                                    System.out.println("Ingrese el numero que desea buscar: ");
+                                    int num = scanner.nextInt();
+                                    int pos = 0;
+                                    boolean encontrado = false;
+                                    while (pos < arreglo.length && !encontrado) {
+                                        if (arreglo[pos] == num) {
+                                            encontrado = true;
+                                        } else {
+                                            pos++;
+                                        }
+                                    }
+                                    if (encontrado) {
+                                        System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
+                                    } else {
+                                        System.out.println("El numero " + num + " no se encuentra en el arreglo");
+                                    }
+                                    break;
+                                case 2:
+                                    // Busqueda binaria
+                                    System.out.println("Ingrese el numero que desea buscar: ");
+                                    num = scanner.nextInt();
+                                    int centro, inf = 0, sup = arreglo.length - 1;
+                                    boolean encontradoBin = false;
+                                    while (inf <= sup && !encontradoBin) {
+                                        centro = (sup + inf) / 2;
+                                        if (arreglo[centro] == num) {
+                                            encontradoBin = true;
+                                        } else if (num < arreglo[centro]) {
+                                            sup = centro - 1;
+                                        } else {
+                                            inf = centro + 1;
+                                        }
+                                    }
+                                    if (encontradoBin) {
+                                        System.out.println("El numero " + num + " se encuentra en la posicion " + inf);
+                                    } else {
+                                        System.out.println("El numero " + num + " no se encuentra en el arreglo");
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Gracias por utilizar el programa");
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Gracias por utilizar el programa");
+                            salir = true;
+                        break;
+                        }
                     break;
                 case 2:
                     int[] arreglo2 = arreglo.clone();
@@ -327,41 +392,32 @@ public class Main
                             // Busqueda secuencial
                             System.out.println("Ingrese el numero que desea buscar: ");
                             int num = scanner.nextInt();
-                            int pos = 0;
                             boolean encontrado = false;
-                            while (pos < arreglo.length && !encontrado) {
+                            for (int pos = 0; pos < arreglo.length; pos++) {
                                 if (arreglo[pos] == num) {
                                     encontrado = true;
-                                } else {
-                                    pos++;
+                                    System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
                                 }
                             }
-                            if (encontrado) {
-                                System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
-                            } else {
+                            if (!encontrado) {
                                 System.out.println("El numero " + num + " no se encuentra en el arreglo");
                             }
+                  
                             break;
                         case 2:
                             // Busqueda binaria
+                            
                             System.out.println("Ingrese el numero que desea buscar: ");
                             num = scanner.nextInt();
-                            int centro, inf = 0, sup = arreglo.length - 1;
-                            boolean encontradoBin = false;
-                            while (inf <= sup && !encontradoBin) {
-                                centro = (sup + inf) / 2;
-                                if (arreglo[centro] == num) {
-                                    encontradoBin = true;
-                                } else if (num < arreglo[centro]) {
-                                    sup = centro - 1;
-                                } else {
-                                    inf = centro + 1;
+                            encontrado = false;
+                            for (int pos = 0; pos < arreglo.length; pos++) {
+                                if (arreglo[pos] == num) {
+                                    encontrado = true;
+                                    System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
                                 }
                             }
-                            if (encontradoBin) {
-                                System.out.println("El numero " + num + " se encuentra en la posicion " + inf);
-                            } else {
-                                System.out.println("El numero " + num + " no se encuentra en el arreglo");
+                            if (!encontrado) {
+                                System.out.println("El numero " + num + " no se encuentra en el arreglo");
                             }
                             break;
                         default:
@@ -441,14 +497,79 @@ public class Main
                     
                         default:
                             break;
+
                     }
                     // Imprimir el arreglo
                     System.out.println("Actualmente los datos estan ordenados, su resultado es:");
                     for (int i = 0; i < tamano; i++) {
                         System.out.print(arreglo[i] + ", ");
                     }
+                    System.out.println("Desea buscar un elemento en el arreglo?");
+                    System.out.println("1. Si");
+                    System.out.println("2. No");
+                    opcion = scanner.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("Desea hacer busqueda secuencial o binaria?: ");
+                            System.out.println("1. Busqueda secuencial");
+                            System.out.println("2. Busqueda binaria");
+                            opcion = scanner.nextInt();
+                            switch (opcion) {
+                                case 1:
+                                    // Busqueda secuencial
+                                    System.out.println("Ingrese el numero que desea buscar: ");
+                                    int num = scanner.nextInt();
+                                    int pos = 0;
+                                    boolean encontrado = false;
+                                    while (pos < arreglo.length && !encontrado) {
+                                        if (arreglo[pos] == num) {
+                                            encontrado = true;
+                                        } else {
+                                            pos++;
+                                        }
+                                    }
+                                    if (encontrado) {
+                                        System.out.println("El numero " + num + " se encuentra en la posicion " + pos);
+                                    } else {
+                                        System.out.println("El numero " + num + " no se encuentra en el arreglo");
+                                    }
+                                    break;
+                                case 2:
+                                    // Busqueda binaria
+                                    System.out.println("Ingrese el numero que desea buscar: ");
+                                    num = scanner.nextInt();
+                                    int centro, inf = 0, sup = arreglo.length - 1;
+                                    boolean encontradoBin = false;
+                                    while (inf <= sup && !encontradoBin) {
+                                        centro = (sup + inf) / 2;
+                                        if (arreglo[centro] == num) {
+                                            encontradoBin = true;
+                                        } else if (num < arreglo[centro]) {
+                                            sup = centro - 1;
+                                        } else {
+                                            inf = centro + 1;
+                                        }
+                                    }
+                                    if (encontradoBin) {
+                                        System.out.println("El numero " + num + " se encuentra en la posicion " + inf);
+                                    } else {
+                                        System.out.println("El numero " + num + " no se encuentra en el arreglo");
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Gracias por utilizar el programa");
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Gracias por utilizar el programa");
+                            salir = true;
+                        break;
+                        }
                     break;
-                    
                 default:
                     System.out.println("Gracias por utilizar el programa");
                     salir = true;
